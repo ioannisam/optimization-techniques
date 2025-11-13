@@ -1,4 +1,4 @@
-function [aK,bK,k,fevals,history] = dichotomous_method(f,a,b,l,e)
+function [aK,bK,k,fevals,history] = dichotomous(f,a,b,l,e)
    
     if ~(isa(f,'function_handle'))
         error('Input f must be a function handle.');
