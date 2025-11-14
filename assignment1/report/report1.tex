@@ -1,0 +1,77 @@
+\documentclass[a4paper,12pt]{article}
+
+\usepackage{fontspec}
+\usepackage{polyglossia}
+
+\setmainlanguage{greek}
+\setotherlanguage{english}
+
+\setmainfont{Latin Modern Roman}
+\newfontfamily\greekfont{CMU Serif}[Script=Greek]
+
+\usepackage[a4paper, top=1.5cm, bottom=1.5cm, left=1.5cm, right=1.5cm]{geometry}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{array}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    citecolor=black,
+    urlcolor=blue
+}
+\usepackage[super,sort&compress]{cite}
+
+\newcolumntype{C}{>{\centering\arraybackslash}c}
+
+\title{Τεχνικές Βελτιστοποίησης: Εργασία 1}
+\author{Ιωάννης Μιχάλαινας ΑΕΜ:10902}
+\date{Νοέμβριος 2025}
+
+\begin{document}
+
+\maketitle
+
+\begin{center}
+\textbf{Code Repository:} \\
+\href{https://github.com/ioannisam/optimization-techniques}
+     {github.com/ioannisam/optimization-techniques}
+\end{center}
+
+\bigskip
+
+\begin{abstract}
+    Στην εργασία αυτή υλοποιούνται και συγκρίνονται μονοδιάστατες μέθοδοι βελτιστοποίησης - συγκεκριμένα η μέθοδος Διχοτόμου, η μέθοδος Χρυσού Τομέα, η μέθοδος Fibonacci και η Διχοτόμος Μέθοδος με χρήση παραγώγου. Για καθεμία από αυτές εξετάζεται ο αριθμός υπολογισμών και η ταχύτητα σύγκλισης, εφαρμόζοντάς τες σε διαφορετικές συναρτήσεις δοκιμής. Τα αποτελέσματα δείχνουν τις διαφορές αποδοτικότητας μεταξύ των μεθόδων και αναδεικνύουν τα πλεονεκτήματα και τους περιορισμούς καθεμιάς.
+\end{abstract}
+
+\tableofcontents
+\clearpage
+
+\section{Εισαγωγή}
+Στην εργασία αυτή μελετάμε διάφορες τεχνικές βελτιστοποίησης, ονομαστικά τη μέθοδο Διχοτόμου, τη μέθοδο Χρυσού Τομέα, τη μέθοδο Fibonacci και τη μέθοδο Διχοτόμου με χρήση παραγώγου. Ο σκοπός της εργασίας αυτής είναι η εξοικείωση με τις παραπάνω μεθόδους και η σύγκριση μεταξύ τους, όσον αφορά την αποδοτικότητα, μέσω ανάλυσης του αριθμού υπολογισμών και της σύγκλισης των διαστημάτων αναζήτησης.
+
+\section{Μέθοδος Διχοτόμου}
+
+\section{Μέθοδος Χρυσού Τομέα}
+
+\section{Μέθοδος Fibonacci}
+
+\section{Μέθοδος Διχοτόμου (με χρήση παραγώγου)}
+
+\appendix
+
+\section{Εργαλεία}
+Τα εργαλία που χρησιμοποιήθηκαν κατά την εκπόνηση της εργασίας είναι τα εξής:
+\begin{itemize}
+    \item MATLAB
+    \item LaTeX
+    \item Git
+\end{itemize}
+
+\section{Βιβλιογραφία}
+\begin{thebibliography}{9}
+    \bibitem[\href{https://www.tziola.gr/book/rovi/}{1}]{book}
+         Γ. Ροβιθάκης, \textit{Τεχνικές Βελτιστοποίησης}, Εκδόσεις Τζιόλα, 2007.  
+\end{thebibliography}
+
+\end{document}
