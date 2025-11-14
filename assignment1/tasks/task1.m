@@ -9,7 +9,7 @@ l_fixed = 0.01;
 e_values = 0.0001:0.0005:0.005;
 
 figure;
-sgtitle(['Dichotomous: Function evaluations vs \epsilon (fixed l = ', num2str(l_fixed), ')']);
+sgtitle(['Dichotomous: Function evaluations vs \epsilon (fixed l = ', num2str(l_fixed), ')'], 'FontWeight','bold');
 for i = 1:3
     fevals_e = zeros(size(e_values));
     for j = 1:length(e_values)
@@ -29,7 +29,7 @@ e_fixed = 0.001;
 l_values = 0.01:0.005:0.1;
 
 figure;
-sgtitle(['Dichotomous: Function evaluations vs l (fixed \epsilon = ', num2str(e_fixed), ')']);
+sgtitle(['Dichotomous: Function evaluations vs l (fixed \epsilon = ', num2str(e_fixed), ')'], 'FontWeight','bold');
 for i = 1:3
     fevals_l = zeros(size(l_values));
     for j = 1:length(l_values)
@@ -49,7 +49,7 @@ l_values = [0.1, 0.01, 0.003];
 e = 0.001;
 
 figure;
-sgtitle('Interval endpoints a_k, b_k vs iteration k for different l');
+sgtitle('Dichotomous: Interval endpoints a_k, b_k vs iteration k for different l', 'FontWeight','bold');
 colors = lines(length(l_values));
 for i = 1:3
     for j = 1:length(l_values)
