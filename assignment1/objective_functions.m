@@ -1,10 +1,20 @@
-f1 = @(x) 5*x + (2 - cos(x)).^2;
-f2 = @(x) (x - 1).^2 + exp(x) - 5*sin(x+3);
-f3 = @(x) exp(-3*x) - (sin(x-2)-2).^2;
+syms x
 
-df1 = @(x) 5 + 2*(2 - cos(x)).*sin(x);
-df2 = @(x) 2*(x-1) + exp(x) - 5*cos(x+3);
-df3 = @(x) -3*exp(-3*x) - 2*(sin(x-2)-2).*cos(x-2);
+f1_sym = 5^x + (2-cos(x))^2;
+f2_sym = (x-1)^2 + exp(x-5)*sin(x+3);
+f3_sym = exp(-3*x) - (sin(x-2)-2)^2;
+
+df1_sym = diff(f1_sym, x);
+df2_sym = diff(f2_sym, x);
+df3_sym = diff(f3_sym, x);
+
+f1 = matlabFunction(f1_sym);
+f2 = matlabFunction(f2_sym);
+f3 = matlabFunction(f3_sym);
+
+df1 = matlabFunction(df1_sym);
+df2 = matlabFunction(df2_sym);
+df3 = matlabFunction(df3_sym);
 
 funcs = {f1, f2, f3};
 dfuncs = {df1, df2, df3};
