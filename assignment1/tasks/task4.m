@@ -13,7 +13,7 @@ for i = 1:3
     fevals_l = zeros(size(l_values));
     for j = 1:length(l_values)
         l = l_values(j);
-        [~,~,~,fevals,~] = dichotomous_derivative(dfuncs{i}, a0, b0, l);
+        [~,~,~,fevals,~] = dichotomous_derivative(dfuncs{i}, a1, b1, l);
         fevals_l(j) = fevals;
     end
     subplot(3,1,i);
@@ -32,7 +32,7 @@ sgtitle('Dichotomous (with derivative): Interval endpoints a_k, b_k vs iteration
 for i = 1:3
     for j = 1:length(l_values)
         l = l_values(j);
-        [~, ~, k, ~, history] = dichotomous_derivative(dfuncs{i}, a0, b0, l);
+        [~, ~, k, ~, history] = dichotomous_derivative(dfuncs{i}, a1, b1, l);
 
         subplot(3,3,(i-1)*3 + j); hold on;
         plot(0:k, history.a, '--', 'Color', colors(j,:), 'Marker', 'o', 'LineWidth',1.2, 'DisplayName', 'a_k');

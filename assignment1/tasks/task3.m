@@ -14,7 +14,7 @@ for i = 1:3
     fevals_l = zeros(size(l_values));
     for j = 1:length(l_values)
         l = l_values(j);
-        [~,~,~,fevals,~] = fibonacci(funcs{i}, a0, b0, l, e);
+        [~,~,~,fevals,~] = fibonacci(funcs{i}, a1, b1, l, e);
         fevals_l(j) = fevals;
     end
     subplot(3,1,i);
@@ -33,7 +33,7 @@ sgtitle('Fibonacci: Interval endpoints a_k, b_k vs iteration k for different l',
 for i = 1:3
     for j = 1:length(l_values)
         l = l_values(j);
-        [~, ~, ~, ~, history] = fibonacci(funcs{i}, a0, b0, l, e);
+        [~, ~, ~, ~, history] = fibonacci(funcs{i}, a1, b1, l, e);
 
         subplot(3,3,(i-1)*3 + j); hold on;
         plot(1:length(history.a), history.a, '--', 'Color', colors(j,:), 'Marker', 'o', 'LineWidth',1.2, 'DisplayName', 'a_k');

@@ -11,7 +11,7 @@ function [aK,bK,k,fevals,history] = golden_section(f,a,b,l)
     end
 
     gr = (sqrt(5)-1) / 2;
-    x1 = b - (1-gr)*(b-a);
+    x1 = a + (1-gr)*(b-a);
     x2 = a + gr*(b-a);
     f1 = f(x1);
     f2 = f(x2);
@@ -32,7 +32,7 @@ function [aK,bK,k,fevals,history] = golden_section(f,a,b,l)
             b = x2;
             x2 = x1;
             f2 = f1;
-            x1 = b - (1-gr)*(b-a);
+            x1 = a + (1-gr)*(b-a);
             f1 = f(x1);
         end
 

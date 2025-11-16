@@ -14,7 +14,7 @@ for i = 1:3
     fevals_e = zeros(size(e_values));
     for j = 1:length(e_values)
         e = e_values(j);
-        [~,~,~,fevals,~] = dichotomous(funcs{i}, a0, b0, l_fixed, e);
+        [~,~,~,fevals,~] = dichotomous(funcs{i}, a1, b1, l_fixed, e);
         fevals_e(j) = fevals;
     end
     subplot(3,1,i);
@@ -34,7 +34,7 @@ for i = 1:3
     fevals_l = zeros(size(l_values));
     for j = 1:length(l_values)
         l = l_values(j);
-        [~,~,~,fevals,~] = dichotomous(funcs{i}, a0, b0, l, e_fixed);
+        [~,~,~,fevals,~] = dichotomous(funcs{i}, a1, b1, l, e_fixed);
         fevals_l(j) = fevals;
     end
     subplot(3,1,i);
@@ -54,7 +54,7 @@ colors = lines(length(l_values));
 for i = 1:3
     for j = 1:length(l_values)
         l = l_values(j);
-        [~, ~, ~, ~, history] = dichotomous(funcs{i}, a0, b0, l, e);
+        [~, ~, ~, ~, history] = dichotomous(funcs{i}, a1, b1, l, e);
         
         subplot(3,3,(i-1)*3 + j); hold on;
         plot(1:length(history.a), history.a, '--', 'Color', colors(j,:), 'Marker', 'x', 'LineWidth', 1.2, 'DisplayName', 'a_k');

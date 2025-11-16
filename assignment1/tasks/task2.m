@@ -13,7 +13,7 @@ for i = 1:3
     fevals_l = zeros(size(l_values));
     for j = 1:length(l_values)
         l = l_values(j);
-        [~,~,~,fevals,~] = golden_section(funcs{i}, a0, b0, l);
+        [~,~,~,fevals,~] = golden_section(funcs{i}, a1, b1, l);
         fevals_l(j) = fevals;
     end
     subplot(3,1,i);
@@ -32,7 +32,7 @@ sgtitle('Golden Section: Interval endpoints a_k, b_k vs iteration k for differen
 for i = 1:3
     for j = 1:length(l_values)
         l = l_values(j);
-        [~, ~, ~, ~, history] = golden_section(funcs{i}, a0, b0, l);
+        [~, ~, ~, ~, history] = golden_section(funcs{i}, a1, b1, l);
 
         subplot(3,3,(i-1)*3 + j); hold on;
         plot(1:length(history.a), history.a, '--', 'Color', colors(j,:), 'Marker', 'o', 'LineWidth',1.2, 'DisplayName', 'a_k');
