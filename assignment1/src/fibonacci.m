@@ -1,4 +1,4 @@
-function [aK,bK,k,fevals,history] = fibonacci(f,a,b,l)
+function [aK,bK,k,fevals,history] = fibonacci(f,a,b,l,e)
 
     if ~(isa(f,'function_handle'))
         error('Input f must be a function handle.');
@@ -25,24 +25,19 @@ function [aK,bK,k,fevals,history] = fibonacci(f,a,b,l)
     history.a = a;
     history.b = b;
 
-    for k = 1:(n-2) 
-        if f1 < f2
-            b = x2;
-            x2 = x1;
-            f2 = f1;
-            
-            if n-k-2 >= 1
-                x1 = a + (F(n-k-2)/F(n-k))*(b-a);
-            else
-                x1 = a + 0.5*(b-a); % avoid F(0)
-            end
-        else
+    for k = 1:(n-3) 
+        if f1 > f2
             a = x1;
             x1 = x2;
             f1 = f2;
-
             x2 = a + (F(n-k-1)/F(n-k))*(b-a);
-            f2 = f(x2);
+            f2 = f(x2); 
+        else
+            b = x2;
+            x2 = x1;
+            f2 = f1;  
+            x1 = a + (F(n-k-2)/F(n-k))*(b-a);
+            f1 = f(x1);        
         end
 
         fevals = fevals + 1;
@@ -50,6 +45,16 @@ function [aK,bK,k,fevals,history] = fibonacci(f,a,b,l)
         history.b(end+1) = b;
     end
 
-    aK = a;
-    bK = b;
+    x2 = x1 + e;
+    f2 = f(x2);
+    if f1 > f2
+        aK = x1;
+        bK = b;
+    else
+        aK = a;
+        bK = x1;
+    end
+    
+    history.a(end+1) = aK;
+    history.b(end+1) = bK;
 end

@@ -11,29 +11,29 @@ function [aK,bK,k,fevals,history] = golden_section(f,a,b,l)
     end
 
     gr = (sqrt(5)-1) / 2;
-    x1 = b - gr*(b-a);
+    x1 = b - (1-gr)*(b-a);
     x2 = a + gr*(b-a);
     f1 = f(x1);
     f2 = f(x2);
 
-    k = 0;
+    k = 1;
     fevals = 2;
     history.a = a;
     history.b = b;
 
-    while (b - a) > l
-        if f1 < f2
-            b = x2;
-            x2 = x1;
-            f2 = f1;
-            x1 = b - gr*(b-a);
-            f1 = f(x1);
-        else
+    while (b-a) > l
+        if f1 > f2
             a = x1;
             x1 = x2;
             f1 = f2;
             x2 = a + gr*(b-a);
             f2 = f(x2);
+        else
+            b = x2;
+            x2 = x1;
+            f2 = f1;
+            x1 = b - (1-gr)*(b-a);
+            f1 = f(x1);
         end
 
         fevals = fevals + 1;  % one function eval per iteration

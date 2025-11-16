@@ -21,6 +21,8 @@
     urlcolor=blue
 }
 \usepackage[super,sort&compress]{cite}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
 
 \newcolumntype{C}{>{\centering\arraybackslash}c}
 
@@ -33,7 +35,7 @@
 \maketitle
 
 \begin{center}
-\textbf{Code Repository:} \\
+\textbf{Αποθετήριο Κώδικα:} \\
 \href{https://github.com/ioannisam/optimization-techniques}
      {github.com/ioannisam/optimization-techniques}
 \end{center}
@@ -52,11 +54,155 @@
 
 \section{Μέθοδος Διχοτόμου}
 
+    \subsection{Αλγόριθμος}
+    
+    \begin{algorithm}
+        \caption{Μέθοδος Διχοτόμου}
+        \begin{algorithmic}[1]
+        \Require συνάρτηση $f$, διάστημα $[a_1,b_1]$, σταθερά $\epsilon>0$, τελική ακρίβεια $l>0$
+        \Ensure προσέγγιση ελαχίστου $x^*$
+        \State ορίστε $a \gets a_1$, $b \gets b_1$, $k \gets 1$
+        \While{$b - a > l$}
+            \State $m \gets (a+b)/2$
+            \State $x_1 \gets m - \epsilon$
+            \State $x_2 \gets m + \epsilon$
+            \State $f_1 \gets f(x_1)$
+            \State $f_2 \gets f(x_2)$
+            \If{$f_1 < f_2$}
+                \State $b \gets x_2$ \Comment{Το ελάχιστο βρίσκεται στο [a, x2]}
+            \Else
+                \State $a \gets x_1$ \Comment{Το ελάχιστο βρίσκεται στο [x1, b]}
+            \EndIf
+            \State $k \gets k+1$
+        \EndWhile
+        
+        \State \Return $[a_K,b_K] \gets [a,b]$
+        \end{algorithmic}
+    \end{algorithm}
+    
+    \subsection{Γραφικές Παραστάσεις}
+    \subsection{Συμπεράσματα}
 \section{Μέθοδος Χρυσού Τομέα}
 
+    \subsection{Αλγόριθμος}
+    
+    \begin{algorithm}
+        \caption{Μέθοδος Χρυσού Τομέα}
+        \begin{algorithmic}[1]
+        \Require συνάρτηση $f$, διάστημα $[a_1,b_1]$, τελική ακρίβεια $l>0$
+        \Ensure προσέγγιση ελαχίστου $x^*$
+        \State ορίστε $a \gets a_1$, $b \gets b_1$, $k \gets 1$
+        \State $\gamma \gets (\sqrt{5}-1)/2$ \Comment{Χρυσός λόγος (0.618)}
+        \State $x_1 \gets b - (1-\gamma)*(b-a)$
+        \State $x_2 \gets a + \gamma*(b-a)$
+        \State $f_1 \gets f(x_1)$
+        \State $f_2 \gets f(x_2)$
+        \While{$b - a > l$}
+            \If{$f_1 > f_2$}
+                \State $a \gets x_1$
+                \State $x_1 \gets x_2$
+                \State $f_1 \gets f_2$
+                \State $x_2 \gets a + \gamma*(b-a)$
+                \State $f_2 \gets f(x_2)$
+            \Else
+                \State $b \gets x_2$
+                \State $x_2 \gets x_1$
+                \State $f_2 \gets f_1$
+                \State $x_1 \gets b - (1-\gamma)*(b-a)$
+                \State $f_1 \gets f(x_1)$ 
+            \EndIf
+            \State $k \gets k + 1$
+        \EndWhile
+        
+        \State \Return $[a_K,b_K] \gets [a,b]$
+        \end{algorithmic}
+    \end{algorithm}
+    
+    \subsection{Γραφικές Παραστάσεις}
+    \subsection{Συμπεράσματα}
 \section{Μέθοδος Fibonacci}
 
+    \subsection{Αλγόριθμος}
+    
+    \begin{algorithm}
+        \caption{Μέθοδος Fibonacci}
+        \begin{algorithmic}[1]
+        \Require συνάρτηση $f$, διάστημα $[a_1,b_1]$, σταθερά $\epsilon>0$, τελική ακρίβεια $l>0$
+        \Ensure προσέγγιση ελαχίστου $x^*$
+        \State Ορίστε $a \gets a_1$, $b \gets b_1$, $k \gets 1$
+        \State Δημιουργήστε τη σειρά Fibonacci $F = [1, 1]$
+        \While{$F_{\text{end}} < (b-a)/l$}
+            \State Προσθέστε $F_{\text{end}} + F_{\text{end-1}}$ στο τέλος της σειράς
+        \EndWhile
+        \State $n \gets \text{μήκος}(F)$
+        \State $x_1 \gets a + (F_{n-2}/F_n)*(b-a)$
+        \State $x_2 \gets a + (F_{n-1}/F_n)*(b-a)$
+        \State $f_1 \gets f(x_1)$
+        \State $f_2 \gets f(x_2)$
+        
+        \For{$k = 1$ to $n-3$}
+            \If{$f_1 > f_2$}
+                \State $a \gets x_1$
+                \State $x_1 \gets x_2$
+                \State $f_1 \gets f_2$
+                \State $x_2 \gets a + (F_{n-k-1}/F_{n-k})*(b-a)$
+                \State $f_2 \gets f(x_2)$
+            \Else
+                \State $b \gets x_2$
+                \State $x_2 \gets x_1$
+                \State $f_2 \gets f_1$
+                \State $x_1 \gets a + (F_{n-k-2}/F_{n-k})*(b-a)$
+                \State $f_1 \gets f(x_1)$
+            \EndIf
+        \EndFor
+
+        \State $x_2 \gets x_1 + \epsilon$ 
+        \If{$f_1 > f_2$}
+            \State $a \gets x_1$
+        \Else
+            \State $b \gets x_2$
+        \EndIf
+        
+        \State \Return $[a_K,b_K] \gets [a,b]$
+        \end{algorithmic}
+    \end{algorithm}
+    
+    \subsection{Γραφικές Παραστάσεις}
+    \subsection{Συμπεράσματα}
 \section{Μέθοδος Διχοτόμου (με χρήση παραγώγου)}
+
+    \subsection{Αλγόριθμος}
+
+    \begin{algorithm}
+    \caption{Μέθοδος Διχοτόμου (με χρήση παραγώγου)}
+    \begin{algorithmic}[1]
+        \Require παράγωγος συνάρτησης $f'$, διάστημα $[a_1,b_1]$, τελική ακρίβεια $l>0$
+        \Ensure τελικό διάστημα $[a_K,b_K]$ που περιέχει το ελάχιστο
+    
+        \State Ορίστε $a \gets a_1$, $b \gets b_1$
+        \State $n \gets \left\lceil \log_2\left(\frac{b_1 - a_1}{l}\right) \right\rceil$
+        
+        \For{$k = 1$ \textbf{to} $n$}
+            \State $x \gets (a + b)/2$
+            \State $df_m \gets f'(x)$
+            
+            \If{$df_m > 0$}
+                \State $b \gets x$ \Comment{Το ελάχιστο βρίσκεται στο αριστερό μέρος}
+            \ElsIf{$df_m < 0$}
+                \State $a \gets x$ \Comment{Το ελάχιστο βρίσκεται στο δεξί μέρος}
+            \Else
+                \State $a \gets x$, $b \gets x$ \Comment{Βρέθηκε ακριβές ελάχιστο}
+                \State \textbf{break}
+            \EndIf
+        \EndFor
+        
+        \State \Return $[a_K,b_K] \gets [a,b]$
+        \end{algorithmic}
+    \end{algorithm}
+    
+    \subsection{Γραφικές Παραστάσεις}
+    \subsection{Συμπεράσματα}
+\section{Σύγκριση Μεθόδων}
 
 \appendix
 

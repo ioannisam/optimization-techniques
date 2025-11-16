@@ -10,34 +10,33 @@ function [aK,bK,k,fevals,history] = dichotomous_derivative(df,a,b,l)
         error('Input l must be a positive scalar.');
     end
 
-    k = 0;
+    n = ceil(log2((b-a) / l));
     fevals = 0;
     history.a = a;
     history.b = b;
 
-    while (b-a) > l
-        m = (a+b) / 2;
-        df_m = df(m);
+    for k = 1:n
+        x = (a+b) / 2;
+        df_m = df(x);
         fevals = fevals + 1;
 
         if df_m > 0
-            b = m; % minimum the left
+            b = x; % minimum the left
         elseif df_m < 0
-            a = m; % minimum the right
+            a = x; % minimum the right
         else
             % exact minimum
-            a = m;
-            b = m;
+            a = x;
+            b = x;
+            history.a(end+1) = a;
+            history.b(end+1) = b;
+            aK = a;
+            bK = b;
+            return;
         end
 
-        k = k + 1;
         history.a(end+1) = a;
         history.b(end+1) = b;
-
-        if k > 1e6
-            warning('Maximum number of iterations reached.');
-            break;
-        end
     end
 
     aK = a;

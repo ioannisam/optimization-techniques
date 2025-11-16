@@ -10,7 +10,7 @@ function [aK,bK,k,fevals,history] = dichotomous(f,a,b,l,e)
         error('Inputs l and e must be positive scalars.');
     end
 
-    k = 0;
+    k = 1;
     fevals = 0;
     history.a = a;
     history.b = b;

@@ -32,11 +32,11 @@ sgtitle('Golden Section: Interval endpoints a_k, b_k vs iteration k for differen
 for i = 1:3
     for j = 1:length(l_values)
         l = l_values(j);
-        [~, ~, k, ~, history] = golden_section(funcs{i}, a0, b0, l);
+        [~, ~, ~, ~, history] = golden_section(funcs{i}, a0, b0, l);
 
         subplot(3,3,(i-1)*3 + j); hold on;
-        plot(0:k, history.a, '--', 'Color', colors(j,:), 'Marker', 'o', 'LineWidth',1.2, 'DisplayName', 'a_k');
-        plot(0:k, history.b, '-',  'Color', colors(j,:), 'Marker', 'o', 'LineWidth',1.2, 'DisplayName', 'b_k');
+        plot(1:length(history.a), history.a, '--', 'Color', colors(j,:), 'Marker', 'o', 'LineWidth',1.2, 'DisplayName', 'a_k');
+        plot(1:length(history.b), history.b, '-',  'Color', colors(j,:), 'Marker', 'o', 'LineWidth',1.2, 'DisplayName', 'b_k');
         xlabel('Iteration k'); ylabel('a_k, b_k');
         title([fnames{i}, ', l=', num2str(l)], 'FontWeight','bold', 'FontSize', 12);
         grid on;
