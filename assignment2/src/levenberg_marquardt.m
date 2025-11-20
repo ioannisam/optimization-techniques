@@ -1,4 +1,8 @@
-function [xk, k, evals, history] = newton(f, gf, hf, x, gamma_fixed, e, method)
+function [xk, k, evals, history] = levenberg_marquardt(f, gf, hf, x, m, gamma_fixed, e, method)
+
+    if nargin < 8
+        m = 1e-3;
+    end
 
     if ~(isa(f,'function_handle'))
         error('Input f must be a function handle.');
@@ -10,6 +14,9 @@ function [xk, k, evals, history] = newton(f, gf, hf, x, gamma_fixed, e, method)
         error('Input hf must be a function handle.');
     end
 
+    if ~(isscalar(m) && m > 0)
+        error('Input m must be a positive scalar.');
+    end
     if ~(isscalar(gamma_fixed) && gamma_fixed > 0)
         error('Input gamma_fixed must be a positive scalar.');
     end
@@ -21,8 +28,9 @@ function [xk, k, evals, history] = newton(f, gf, hf, x, gamma_fixed, e, method)
     if ~ischar(method) || ~ismember(method, valid_methods)
         error('Input method must be one of: ''fixed'', ''optimal'', ''armijo''.');
     end
-    
+
     k = 1;
+    mk = m;
     evals.fevals = 0; % function evaluations
     evals.gevals = 0; % gradient evaluations
     evals.sevals = 0; % search   evaluations
@@ -38,12 +46,9 @@ function [xk, k, evals, history] = newton(f, gf, hf, x, gamma_fixed, e, method)
 
     while norm(gfx) > e
         hfx = hf(xk);
-        if ~all(eig(hfx) > 0)
-            warning('Hessian is not positive definite. Ending execution.');
-            break;
-        end
+        [hfx_lm, mk] = ensure_mk(hfx, mk);
 
-        dk = -hfx \ gfx;
+        dk = -hfx_lm \ gfx;
 
         switch method
             case 'fixed'
