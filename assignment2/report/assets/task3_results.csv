@@ -1,0 +1,10 @@
+Initial Point,Method,Minimum Point x*,Minimum Value f(x*),Iterations,Function Evaluations,Step Evaluations
+[0 0],fixed,[0 0],0,0,2,0
+[0 0],optimal,[0 0],0,0,2,0
+[0 0],armijo,[0 0],0,0,2,0
+[-1 -1],fixed,[-0.376 -1.94],-3.23e-08,131,264,0
+[-1 -1],optimal,[-0.374 -1.94],-3.32e-08,3254,6510,39048
+[-1 -1],armijo,[-1 -1],-0.135,999999,2000000,30999969
+[1 1],fixed,[0.376 1.94],3.23e-08,131,264,0
+[1 1],optimal,[0.42 1.96],2.31e-08,9,20,108
+[1 1],armijo,[0.376 1.94],3.23e-08,131,264,262

@@ -4,7 +4,7 @@ script_folder = fileparts(mfilename('fullpath'));
 addpath(fullfile(script_folder, '..', 'src'));
 run(fullfile(script_folder, '..', 'objective_functions.m'));
 output_dir = fullfile(script_folder, '..', 'report', 'assets');
-output_file = fullfile(output_dir, 'task2_results.csv');
+output_file = fullfile(output_dir, 'task3_results.csv');
 
 results = cell(npoints*nmethods, 7);
 histories = cell(npoints*nmethods, 1);
@@ -15,8 +15,9 @@ for i = 1:npoints
     for j = 1:nmethods
         row = row + 1;
         method = methods{j};
-        [xk, k, evals, history] = steepest_descend(f_wr, gf_wr, x0, gamma_fixed, e, method);
+        [xk, k, evals, history] = newton(f_wr, gf_wr, hf_wr, x0, gamma_fixed, e, method);
         
+
         iterations = numel(history.f) - 1;
         fmin = history.f(end);
         fevals_total = evals.fevals + evals.gevals;
@@ -43,7 +44,7 @@ end
 fclose(fid);
 
 figure;
-sgtitle('Steepest Descend: Convergence history vs iteration k', 'FontWeight','bold');
+sgtitle('Newton: Convergence history vs iteration k', 'FontWeight','bold');
 for i = 1:npoints
     for j = 1:nmethods
         idx = (i-1)*nmethods + j;

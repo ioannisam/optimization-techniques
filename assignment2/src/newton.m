@@ -38,10 +38,10 @@ function [xk, k, evals, history] = newton(f, gf, hf, x, gamma_fixed, e, method)
 
     while norm(gfx) > e
         hfx = hf(xk);
-        if ~all(eig(hfx) > 0)
-            warning('Hessian is not positive definite. Ending execution.');
-            break;
-        end
+        % if ~all(eig(hfx) > 0)
+        %     warning('Hessian is not positive definite. Ending execution.');
+        %     break;
+        % end
 
         dk = -hfx \ gfx;
 
