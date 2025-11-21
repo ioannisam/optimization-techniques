@@ -1,6 +1,6 @@
-function [hfx_lm, mk] = ensure_mk(hfx, mk)
+function [hfx_lm, mk] = cholesky(hfx, mk)
 
-    n = numel(hfx);
+    n = size(hfx, 1);
     hfx = 0.5*(hfx + hfx.'); % ensure symmetry
     hfx_lm = hfx + mk*eye(n);
 
@@ -9,7 +9,7 @@ function [hfx_lm, mk] = ensure_mk(hfx, mk)
         if p == 0
             break;
         end
-        mk = mk * 10;
+        mk = mk * 1.5;
         if mk > 1e20
             error('ensure_mk: mk grew too large');
         end

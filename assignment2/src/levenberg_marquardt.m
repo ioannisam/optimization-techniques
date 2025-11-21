@@ -46,7 +46,7 @@ function [xk, k, evals, history] = levenberg_marquardt(f, gf, hf, x, m, gamma_fi
 
     while norm(gfx) > e
         hfx = hf(xk);
-        [hfx_lm, mk] = ensure_mk(hfx, mk);
+        [hfx_lm, mk] = cholesky(hfx, mk);
 
         dk = -hfx_lm \ gfx;
 
@@ -65,10 +65,17 @@ function [xk, k, evals, history] = levenberg_marquardt(f, gf, hf, x, m, gamma_fi
                 error('Unknown method.');
         end
 
-        xk = xk + gk*dk;
+        x_new = xk + gk*dk;
+        fx_new = f(x_new); evals.fevals = evals.fevals + 1;
+        if fx_new < fx
+            mk = mk / 2;
+            xk = x_new;
+            fx = fx_new;
+        else
+            mk = mk * 2;
+        end
         k = k + 1;
 
-        fx = f(xk); evals.fevals = evals.fevals + 1;
         history.x(:,end+1) = xk;
         history.f(end+1,1) = fx;
         history.gamma(end+1) = gk;
