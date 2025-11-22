@@ -1,0 +1,217 @@
+\documentclass[a4paper,12pt]{article}
+
+\usepackage{fontspec}
+\usepackage{microtype}
+\usepackage{polyglossia}
+
+\setmainlanguage{greek}
+\setotherlanguage{english}
+
+\setmainfont{Latin Modern Roman}
+\newfontfamily\greekfont{CMU Serif}[Script=Greek]
+
+\usepackage[a4paper, top=1.5cm, bottom=1.5cm, left=1.5cm, right=1.5cm]{geometry}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{array}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    citecolor=black,
+    urlcolor=blue
+}
+\usepackage[super,sort&compress]{cite}
+\usepackage{amsmath}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+
+\usepackage{tabularx}
+\usepackage{makecell}
+\newcolumntype{Y}{>{\centering\arraybackslash}X}
+
+\newcolumntype{C}{>{\centering\arraybackslash}c}
+
+\title{Τεχνικές Βελτιστοποίησης: Εργασία 2}
+\author{Ιωάννης Μιχάλαινας ΑΕΜ:10902}
+\date{Νοέμβριος 2025}
+
+\begin{document}
+
+\maketitle
+
+\begin{center}
+\textbf{Αποθετήριο Κώδικα:} \\
+\href{https://github.com/ioannisam/optimization-techniques}
+     {github.com/ioannisam/optimization-techniques}
+\end{center}
+
+\bigskip
+
+\begin{abstract}
+    Στην εργασία αυτή υλοποιούνται και συγκρίνονται n-διάστατες μέθοδοι βελτιστοποίησης - συγκεκριμένα η μέθοδος Μέγιστης Καθόδου, η μέθοδος Newton και η μέθοδος Levenberg-Marquardt. Για καθεμία από αυτές εξετάζεται ο αριθμός υπολογισμών και η σύγκλιση, ως προς την ταχύτητα και την ακρίβεια, εφαρμόζοντάς τες από διαφορετικά αρχικά σημεία και με διαφορετικές μεθόδους υπολογισμού του βήματος. Τα αποτελέσματα δείχνουν τις ομοιότητες και τις διαφορές μεταξύ των μεθόδων και αναδεικνύουν τα πλεονεκτήματα και τους περιορισμούς της καθεμιάς. Ο σκοπός της εργασίας αυτής είναι η εξοικείωση με τις παραπάνω μεθόδους και η σύγκριση μεταξύ τους, όσον αφορά την αποδοτικότητα.
+\end{abstract}
+
+\tableofcontents
+\clearpage
+
+\section{Εισαγωγή}
+
+Δοσμένων των αρχικών σημείων $[0,0]$, $[-1,-1]$ και $[1,1]$ θα ελαχιστοποιηθεί η: $$f(x,y) = x^3e^{-x^2-y^4}$$
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\linewidth]{assets/task1_1.jpg}
+    \caption{Τρισδιάστατη απεικόνιση της συνάρτησης f}
+    \label{fig:task1_1}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\linewidth]{assets/task1_2.jpg}
+    \caption{Ισοεπίπεδη απεικόνιση της συνάρτησης f}
+    \label{fig:task1_2}
+\end{figure}
+
+\newpage
+\section{Μέθοδος Μέγιστης Καθόδου}
+
+    \subsection{Αλγόριθμος}
+    
+    \begin{algorithm}[H]
+        \caption{Μέθοδος Μέγιστης Καθόδου}
+        \begin{algorithmic}[1]
+
+        \end{algorithmic}
+    \end{algorithm}
+    
+    \subsection{Γραφικές Παραστάσεις}
+
+    Στο \textit{Σχήμα~\ref{fig:task2_1}} παρουσιάζεται ...
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=1\linewidth]{assets/task2_1.jpg}
+        \caption{Σύγκλιση της f ανά τις επαναλήψεις}
+        \label{fig:task2_1}
+    \end{figure}
+    
+    \subsection{Συμπεράσματα}
+
+\newpage
+\section{Μέθοδος Newton}
+
+    \subsection{Αλγόριθμος}
+    
+    \begin{algorithm}[H]
+        \caption{Μέθοδος Newton}
+        \begin{algorithmic}[1]
+        
+        \end{algorithmic}
+    \end{algorithm}
+
+    \subsection{Γραφικές Παραστάσεις}
+
+    Στο \textit{Σχήμα~\ref{fig:task3_1}} παρουσιάζεται ...  
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=1\linewidth]{assets/task3_1.jpg}
+        \caption{Σύγκλιση της f ανά τις επαναλήψεις}
+        \label{fig:task3_1}
+    \end{figure}
+
+    \subsection{Συμπεράσματα}
+
+\newpage
+\section{Μέθοδος Levenberg-Marquardt}
+
+    \subsection{Αλγόριθμος}
+
+    \begin{algorithm}[H]
+        \caption{Μέθοδος Levenberg-Marquardt}
+        \begin{algorithmic}[1]
+        
+        \end{algorithmic}
+    \end{algorithm}
+
+    \subsection{Γραφικές Παραστάσεις}
+
+    Στο \textit{Σχήμα~\ref{fig:task4_1}} παρουσιάζεται ...
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=1\linewidth]{assets/task4_1.jpg}
+        \caption{Σύγκλιση της f ανά τις επαναλήψεις}
+        \label{fig:task4_1}
+    \end{figure}
+    
+    \subsection{Συμπεράσματα}
+
+\newpage
+\section{Σύγκριση Μεθόδων}
+
+    Σε αυτή την ενότητα θα χρησιμοποιήσουμε τα ευρήματα από τα όλα τα θέματα για να συγκρίνουμε τις μεθόδους μεταξύ τους ως προς την αποδοτικότητα.
+
+    \begin{itemize}
+        \item \textbf{Παρατήρηση 1:} 
+    
+        \item \textbf{Παρατήρηση 2:}
+        
+        \item \textbf{Παρατήρηση 3:}
+        
+        \item \textbf{Παρατήρηση 4:} 
+        
+        \item \textbf{Παρατήρηση 5:} 
+    \end{itemize}
+
+    Ακολουθεί πίνακας που συνοψίζει τα ευρήματα και τα συμπεράσματα της εργασίας αυτής:
+    \begin{table}[H]
+        \centering
+        \small
+        \begin{tabularx}{\linewidth}{|p{3cm}|X|X|p{3cm}|}
+            \hline
+            \textbf{Μέθοδος} &
+            \textbf{Πλεονεκτήματα} &
+            \textbf{Μειονεκτήματα} &
+            \textbf{Χρήση} \\
+            \hline
+    
+            \makecell[l]{Μέγιστης\\Καθόδου} &
+            ... &
+            ... &
+            ... \\
+            \hline
+    
+            \makecell[l]{Newton} &
+            ... &
+            ... &
+            ... \\
+            \hline
+    
+            \makecell[l]{Levenberg-\\Marquardt} &
+            ... &
+            ... &
+            ... \\
+            \hline
+        \end{tabularx}
+    
+        \caption{Σύγκριση μεθόδων βελτιστοποίησης: πλεονεκτήματα, μειονεκτήματα και συνθήκες χρήσης.}
+        \label{tab:method-comparison}
+    \end{table}
+    
+\appendix
+
+\section{Εργαλεία}
+Τα εργαλεία που χρησιμοποιήθηκαν κατά την εκπόνηση της εργασίας είναι τα εξής:
+\begin{itemize}
+    \item MATLAB
+    \item LaTeX
+    \item Git
+\end{itemize}
+
+\section{Βιβλιογραφία}
+\begin{thebibliography}{9}
+    \bibitem[\href{https://www.tziola.gr/book/rovi/}{1}]{book}
+         Γ. Ροβιθάκης, \textit{Τεχνικές Βελτιστοποίησης}, Εκδόσεις Τζιόλα, 2007.  
+\end{thebibliography}
+
+\end{document}
