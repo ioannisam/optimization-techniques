@@ -1,0 +1,115 @@
+\documentclass[a4paper,12pt]{article}
+
+\usepackage{fontspec}
+\usepackage{microtype}
+\usepackage{polyglossia}
+
+\setmainlanguage{greek}
+\setotherlanguage{english}
+
+\setmainfont{Latin Modern Roman}
+\newfontfamily\greekfont{CMU Serif}[Script=Greek]
+
+\usepackage[a4paper, top=1.5cm, bottom=1.5cm, left=1.5cm, right=1.5cm]{geometry}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{array}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    citecolor=black,
+    urlcolor=blue
+}
+\usepackage[super,sort&compress]{cite}
+\usepackage{amsmath}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+
+\usepackage{csvsimple}
+\usepackage{tabularx}
+\usepackage{makecell}
+
+\newcolumntype{C}{>{\centering\arraybackslash}X}
+\newcolumntype{L}{>{\raggedright\arraybackslash}X}
+\newcolumntype{M}{>{\centering\arraybackslash}p{2.5cm}}
+
+\title{Τεχνικές Βελτιστοποίησης: Εργασία 3}
+\author{Ιωάννης Μιχάλαινας ΑΕΜ:10902}
+\date{Δεκέμβριος 2025}
+
+\begin{document}
+
+\maketitle
+
+\begin{center}
+\textbf{Αποθετήριο Κώδικα:} \\
+\href{https://github.com/ioannisam/optimization-techniques}
+     {github.com/ioannisam/optimization-techniques}
+\end{center}
+
+\bigskip
+
+\begin{abstract}
+    
+\end{abstract}
+
+\tableofcontents
+\clearpage
+
+\section{Εισαγωγή}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\linewidth]{assets/visualization_1.jpg}
+    \caption{Τρισδιάστατη απεικόνιση της συνάρτησης f}
+    \label{fig:visualization_1}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\linewidth]{assets/visualization_2.jpg}
+    \caption{Ισοεπίπεδη απεικόνιση της συνάρτησης f}
+    \label{fig:visualization_2}
+\end{figure}
+
+\newpage
+\section{Μέθοδος Μέγιστης Καθόδου}
+    \subsection{Χωρίς Προβολή}
+    \subsection{Με Προβολή}
+
+\newpage
+\section{Θέμα 1}
+    \subsection{Γραφικές Παραστάσεις}
+    \subsection{Μαθηματική Ανάλυση}
+    \subsection{Συμπεράσματα}
+\newpage
+\section{Θέμα 2}
+    \subsection{Γραφικές Παραστάσεις}
+    \subsection{Μαθηματική Ανάλυση}
+    \subsection{Συμπεράσματα}
+
+\newpage
+\section{Θέμα 3}
+    \subsection{Γραφικές Παραστάσεις}
+    \subsection{Μαθηματική Ανάλυση}
+    \subsection{Συμπεράσματα}
+
+\newpage
+\appendix
+
+\section{Εργαλεία}
+Τα εργαλεία που χρησιμοποιήθηκαν κατά την εκπόνηση της εργασίας είναι τα εξής:
+\begin{itemize}
+    \item MATLAB
+    \item LaTeX
+    \item Git
+\end{itemize}
+
+\section{Βιβλιογραφία}
+\begin{thebibliography}{9}
+    \bibitem[\href{https://www.tziola.gr/book/rovi/}{1}]{book}
+         Γ. Ροβιθάκης, \textit{Τεχνικές Βελτιστοποίησης}, Εκδόσεις Τζιόλα, 2007.  
+\end{thebibliography}
+
+\end{document}
