@@ -17,7 +17,6 @@ function [xk, k, evals, history] = steepest_descend(f, gf, x, gamma_fixed, e)
     k = 1;
     evals.fevals = 0; % function evaluations
     evals.gevals = 0; % gradient evaluations
-    evals.sevals = 0; % search   evaluations
 
     xk = double(x(:));
     history.x = xk;
@@ -30,15 +29,13 @@ function [xk, k, evals, history] = steepest_descend(f, gf, x, gamma_fixed, e)
 
     while norm(gfx) > e
         dk = -gfx;
-        gk = gamma_fixed;
 
-        xk = xk + gk*dk;
+        xk = xk + gamma_fixed*dk;
         k = k + 1;
 
         fx = f(xk); evals.fevals = evals.fevals + 1;
         history.x(:,end+1) = xk;
         history.f(end+1,1) = fx;
-        history.gamma(end+1) = gk;
 
         gfx = gf(xk); evals.gevals = evals.gevals + 1;
         gfx = gfx(:);
