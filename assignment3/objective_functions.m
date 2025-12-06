@@ -16,6 +16,5 @@ initial_points = {
     [-5, 10];
     [8, -10];
 };
-npoints = numel(initial_points);
 
-e = 1e-6;
+e = 1e-3;

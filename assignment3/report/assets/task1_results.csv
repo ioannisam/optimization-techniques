@@ -1,0 +1,5 @@
+Initial Point,Gamma,Minimum Point x*,Minimum Value f(x*),Iterations,Function Evaluations,Step Evaluations
+[5 -5],0.1,[0.00146 -5.52e-47],7.07e-07,118,238,0
+[5 -5],0.3,[0.000139 0.000139],6.48e-08,47,96,0
+[5 -5],3,[-5 NaN],NaN,251,504,0
+[5 -5],5,[5.13e+78 NaN],NaN,212,426,0
