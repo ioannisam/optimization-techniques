@@ -2,7 +2,7 @@ clear; clc; close all;
 
 script_folder = fileparts(mfilename('fullpath'));
 addpath(fullfile(script_folder, '..', 'src'));
-
+addpath(fullfile(script_folder, '..'));
 run(fullfile(script_folder, '..', 'objective_functions.m'));
 
 x0 = initial_points{2};
@@ -48,3 +48,5 @@ text_contour = sprintf(['Local Minimum\nx = %.3f\ny = %.3f\nz = %.3f'], xmin(1),
 legend(min_cont, text_contour, 'Location', 'northeast');
 
 hold off;
+
+save_figures();

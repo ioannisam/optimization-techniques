@@ -59,3 +59,5 @@ plot([x1_min x1_max x1_max x1_min x1_min], [x2_min x2_min x2_max x2_max x2_min],
 legend(min_cont, 'Unconstrained Minimum f(0,0)=0', 'Location', 'northeast');
 
 hold off;
+
+save_figures();

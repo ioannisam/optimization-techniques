@@ -2,6 +2,7 @@ clear; clc; close all;
 
 script_folder = fileparts(mfilename('fullpath'));
 addpath(fullfile(script_folder, '..', 'src'));
+addpath(fullfile(script_folder, '..'));
 run(fullfile(script_folder, '..', 'objective_functions.m'));
 
 x0 = [8; -10];
@@ -49,3 +50,5 @@ legend([hContour, hRect, hTraj, hStart, hEnd], ...
        'Location', 'north');
 
 hold off;
+
+save_figures();

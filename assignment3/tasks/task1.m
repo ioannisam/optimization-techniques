@@ -2,6 +2,7 @@ clear; clc; close all;
 
 script_folder = fileparts(mfilename('fullpath'));
 addpath(fullfile(script_folder, '..', 'src'));
+addpath(fullfile(script_folder, '..'));
 run(fullfile(script_folder, '..', 'objective_functions.m'));
 output_dir = fullfile(script_folder, '..', 'report', 'assets');
 output_file = fullfile(output_dir, 'task1_results.csv');
@@ -97,3 +98,5 @@ end
 legend([hContour, hTraj, hStart, hEnd], ...
        {'Iso-contours', 'Trajectory', 'Start', 'End'}, ...
        'Location', 'north');
+
+save_figures();

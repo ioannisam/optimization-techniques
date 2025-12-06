@@ -24,3 +24,5 @@ subplot(3,1,3);
 plot(x_vals, f3_vals,'LineWidth',1.5);
 grid on; xlabel('x'); ylabel('f_3(x)');
 title('Function f_3(x) = exp(-3x) - (sin(x-2)-2)^2');
+
+save_figures();

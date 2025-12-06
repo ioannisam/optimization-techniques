@@ -2,6 +2,7 @@ clear; clc; close all;
 
 script_folder = fileparts(mfilename('fullpath'));
 addpath(fullfile(script_folder, '..', 'src'));
+addpath(fullfile(script_folder, '..'));
 run(fullfile(script_folder, '..', 'objective_functions.m'));
 output_dir = fullfile(script_folder, '..', 'report', 'assets');
 output_file = fullfile(output_dir, 'task4_results.csv');
@@ -63,3 +64,5 @@ for i = 1:npoints
         ylabel('|f_{x_0} - f_{x^*}|');
     end
 end
+
+save_figures();

@@ -2,6 +2,7 @@ clear; clc; close all;
 
 script_folder = fileparts(mfilename('fullpath'));
 addpath(fullfile(script_folder, '..', 'src'));
+addpath(fullfile(script_folder, '..'));
 run(fullfile(script_folder, '..', 'objective_functions.m'));
 
 %% 1️) Vary ε (l fixed) - fevals/ε
@@ -65,3 +66,5 @@ for i = 1:3
         legend('show');
     end
 end
+
+save_figures();
