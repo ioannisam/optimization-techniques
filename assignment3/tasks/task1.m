@@ -54,10 +54,7 @@ for j = 1:ngammas
     semilogy(0:numel(hs)-1, conv, '-o', 'MarkerSize', 4);
     grid on;
 
-    init = sprintf('[%g %g]', x0(1), x0(2));
-    gamma = sprintf('gamma=%.3g', results{j,2});
-
-    title(sprintf('init=%s | %s', init, gamma), 'FontWeight', 'bold');
+    title(sprintf('gamma=%.3g', results{j,1}), 'FontWeight', 'bold');
     xlabel('Iteration k');
     ylabel('|f_{x_0} - f_{x^*}|');
 end

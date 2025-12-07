@@ -36,7 +36,10 @@ fill3([x1_max x1_max x1_max x1_max], [x2_min x2_max x2_max x2_min], [0 0 zmax zm
 fill3([x1_min x1_max x1_max x1_min], [x2_max x2_max x2_max x2_max], [0 0 zmax zmax], 'k', 'FaceAlpha', 0.5, 'EdgeColor', 'k', 'LineWidth',1.5);
 fill3([x1_min x1_min x1_min x1_min], [x2_min x2_max x2_max x2_min], [0 0 zmax zmax], 'k', 'FaceAlpha', 0.5, 'EdgeColor', 'k', 'LineWidth',1.5);
 
-legend(min_surf, 'Unconstrained Minimum f(0,0)=0', 'Location', 'northeast');
+hRegion = plot3(NaN, NaN, NaN, 'k-', 'LineWidth', 3);
+legend([min_surf, hRegion], ...
+       {'Unconstrained Minimum (0,0)', 'Feasible Region'}, ...
+       'Location','northeast');
 
 hold off;
 
@@ -54,9 +57,11 @@ colorbar;
 
 min_cont = plot(xmin(1), xmin(2), 'r*', 'MarkerSize', 20, 'LineWidth', 3);
 
-plot([x1_min x1_max x1_max x1_min x1_min], [x2_min x2_min x2_max x2_max x2_min], 'k-', 'LineWidth', 4);
+hRegion = plot([x1_min x1_max x1_max x1_min x1_min], [x2_min x2_min x2_max x2_max x2_min], 'k-', 'LineWidth', 4);
 
-legend(min_cont, 'Unconstrained Minimum f(0,0)=0', 'Location', 'northeast');
+legend([min_cont, hRegion], ...
+       {'Unconstrained Minimum (0,0)', 'Feasible Region'}, ...
+       'Location','northeast');
 
 hold off;
 
