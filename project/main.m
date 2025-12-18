@@ -41,3 +41,21 @@ if isequal(parents, offspring)
 else
     disp('>> Crossover successful! New generation created.');
 end
+
+fprintf('--- Running Mutation (Rate: %.2f, Noise: %.2f) ---\n', ...
+    params.mutation_rate, params.mutation_noise);
+
+new_pop = mutation(offspring, params);
+
+diff_matrix = new_pop - offspring;
+num_mutations = sum(diff_matrix(:) ~= 0);
+total_genes = numel(new_pop);
+
+fprintf('>> Mutation complete. %d genes mutated out of %d (%.2f%%)\n', ...
+    num_mutations, total_genes, (num_mutations/total_genes)*100);
+
+[new_fit, new_err] = fitness(new_pop, U, Y, params);
+disp('Stats of the new generation (Best 5):');
+[sorted_fit, idx] = sort(new_fit, 'descend');
+sorted_err = new_err(idx);
+disp(table(sorted_fit(1:5), sorted_err(1:5), 'VariableNames', {'Fitness', 'MSE'}));
