@@ -1,5 +1,6 @@
 % Problem Constraints
 params.num_samples = 1000;
+params.max_generations = 10000;
 
 params.c1_range = [-1, 2];
 params.c2_range = [-2, 1];

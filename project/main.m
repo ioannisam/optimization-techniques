@@ -5,57 +5,50 @@ addpath('utils');
 parameters;
 
 [U, Y] = generate_data(params.num_samples);
-
-% black box approach
 params.c1_range = [min(U(:,1)), max(U(:,1))];
 params.c2_range = [min(U(:,2)), max(U(:,2))];
-fprintf('Search space adjusted to data:\n  u1: [%.2f, %.2f]\n  u2: [%.2f, %.2f]\n\n', ...
-    params.c1_range(1), params.c1_range(2), ...
-    params.c2_range(1), params.c2_range(2));
 
+fprintf('Initializing population...\n');
 pop = initialize_population(params);
-disp(['Population created with size: ', num2str(size(pop))]);
 
-[fit, err] = fitness(pop, U, Y, params);
-disp('First 5 individuals stats:');
-disp(table(fit(1:5), err(1:5), 'VariableNames', {'Fitness', 'MSE'}));
+[fitness_score, mse] = fitness(pop, U, Y, params);
+best_mse_history = zeros(params.max_generations, 1);
 
-fprintf('--- Running Selection (Roulette Wheel) ---\n');
-
-parents = selection(pop, fit, params);
-disp(['Parents matrix size: ', num2str(size(parents))]);
-
-if size(parents, 1) == params.pop_size
-    disp('>> Selection successful!');
-else
-    disp('>> Error: Parents matrix has incorrect size.');
+fprintf('Starting Genetic Algorithm for %d generations...\n', params.max_generations);
+for gen = 1:params.max_generations
+    
+    [best_val, best_idx] = max(fitness_score);
+    elite_ind = pop(best_idx, :);
+    min_mse = mse(best_idx);
+    
+    best_mse_history(gen) = min_mse;
+    if mod(gen, 100) == 0 || gen == 1
+        fprintf('Gen %d | Best MSE: %.5f | Best Fitness: %.5f\n', ...
+            gen, min_mse, best_val);
+    end
+    
+    parents = selection(pop, fitness_score, params);
+    offspring = crossover(parents, params);
+    new_pop = mutation(offspring, params);
+    new_pop(1, :) = elite_ind;
+    [new_fit, new_mse] = fitness(new_pop, U, Y, params);
+    
+    pop = new_pop;
+    fitness_score = new_fit;
+    mse = new_mse;
 end
 
-fprintf('--- Running Crossover (Rate: %.2f) ---\n', params.crossover_rate);
+[final_best_fit, idx] = max(fitness_score);
+best_solution = pop(idx, :);
 
-offspring = crossover(parents, params);
-disp(['Offspring matrix size: ', num2str(size(offspring))]);
+fprintf('\nFinal Result:\nBest MSE: %.5f\nBest Fitness: %.5f\n', ...
+    mse(idx), final_best_fit);
 
-if isequal(parents, offspring)
-    disp('>> Note: No crossover occurred (random chance or rate=0).');
-else
-    disp('>> Crossover successful! New generation created.');
-end
+figure;
+plot(best_mse_history, 'LineWidth', 2);
+yscale('log');
+grid on;
 
-fprintf('--- Running Mutation (Rate: %.2f, Noise: %.2f) ---\n', ...
-    params.mutation_rate, params.mutation_noise);
-
-new_pop = mutation(offspring, params);
-
-diff_matrix = new_pop - offspring;
-num_mutations = sum(diff_matrix(:) ~= 0);
-total_genes = numel(new_pop);
-
-fprintf('>> Mutation complete. %d genes mutated out of %d (%.2f%%)\n', ...
-    num_mutations, total_genes, (num_mutations/total_genes)*100);
-
-[new_fit, new_err] = fitness(new_pop, U, Y, params);
-disp('Stats of the new generation (Best 5):');
-[sorted_fit, idx] = sort(new_fit, 'descend');
-sorted_err = new_err(idx);
-disp(table(sorted_fit(1:5), sorted_err(1:5), 'VariableNames', {'Fitness', 'MSE'}));
+title('GA Convergence History');
+xlabel('Generation');
+ylabel('Mean Squared Error (MSE)');
