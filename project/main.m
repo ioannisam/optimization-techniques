@@ -30,3 +30,14 @@ if size(parents, 1) == params.pop_size
 else
     disp('>> Error: Parents matrix has incorrect size.');
 end
+
+fprintf('--- Running Crossover (Rate: %.2f) ---\n', params.crossover_rate);
+
+offspring = crossover(parents, params);
+disp(['Offspring matrix size: ', num2str(size(offspring))]);
+
+if isequal(parents, offspring)
+    disp('>> Note: No crossover occurred (random chance or rate=0).');
+else
+    disp('>> Crossover successful! New generation created.');
+end
