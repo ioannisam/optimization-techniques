@@ -5,8 +5,7 @@ function [U, Y] = generate_data(samples)
     
     u1 = (u1_max - u1_min)*rand(samples, 1) + u1_min;
     u2 = (u2_max - u2_min)*rand(samples, 1) + u2_min;
+    U = [u1, u2];
     
     Y = objective_function(u1, u2);
-    
-    U = [u1, u2];
 end
