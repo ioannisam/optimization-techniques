@@ -11,7 +11,6 @@ params.pop_size = 100;
 params.num_gaussians = 15;
 params.max_generations = 1000;
 
-params.tournament_size = 3;
 params.crossover_rate = 0.8;
 params.mutation_rate = 0.05;
 params.mutation_noise = 0.1;

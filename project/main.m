@@ -19,3 +19,14 @@ disp(['Population created with size: ', num2str(size(pop))]);
 [fit, err] = fitness(pop, U, Y, params);
 disp('First 5 individuals stats:');
 disp(table(fit(1:5), err(1:5), 'VariableNames', {'Fitness', 'MSE'}));
+
+fprintf('--- Running Selection (Roulette Wheel) ---\n');
+
+parents = selection(pop, fit, params);
+disp(['Parents matrix size: ', num2str(size(parents))]);
+
+if size(parents, 1) == params.pop_size
+    disp('>> Selection successful!');
+else
+    disp('>> Error: Parents matrix has incorrect size.');
+end

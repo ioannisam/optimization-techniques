@@ -1,6 +1,6 @@
 function [fitness, mse] = fitness(pop, U, Y, params)
 
-N = params.pop_size;
+    N = params.pop_size;
     M = params.num_samples;
     K = params.num_gaussians;
 
