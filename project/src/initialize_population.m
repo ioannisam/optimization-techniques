@@ -2,12 +2,12 @@ function pop = initialize_population(params)
 
     N = params.pop_size;
     K = params.num_gaussians;
-    genes = 5*K;
+    genes = 5*K; % [w, c1, s1, c2, s2]
     
-    w_min = params.w_range(1); w_max = params.w_range(2);
+    w_min  = params.w_range(1); w_max = params.w_range(2);
     c1_min = params.c1_range(1); c1_max = params.c1_range(2);
     c2_min = params.c2_range(1); c2_max = params.c2_range(2);
-    s_min = params.sigma_range(1); s_max = params.sigma_range(2);
+    s_min  = params.sigma_range(1); s_max = params.sigma_range(2);
 
     pop = zeros(N, genes);
     for i = 1:K

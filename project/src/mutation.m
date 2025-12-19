@@ -7,16 +7,12 @@ function mutated_pop = mutation(pop, params)
     noise = params.mutation_noise;
     
     mask  = rand(N, genes) < rate;
-    noise = randn(N, genes)*noise;
-    mutated_pop(mask) = pop(mask) + noise(mask);
+    noise_matrix = randn(N, genes)*noise;
+    mutated_pop(mask) = pop(mask) + noise_matrix(mask);
     
-    K = params.num_gaussians;
-    for i = 1:K
-        idx_base = (i-1)*5;
-        idx_sig1 = idx_base + 3;
-        idx_sig2 = idx_base + 5;
-        
-        mutated_pop(:, idx_sig1) = max(0.001, abs(mutated_pop(:, idx_sig1)));
-        mutated_pop(:, idx_sig2) = max(0.001, abs(mutated_pop(:, idx_sig2)));
-    end
+    mutated_pop(:, 1:5:end) = max(params.w_range(1), min(params.w_range(2), mutated_pop(:, 1:5:end)));
+    mutated_pop(:, 2:5:end) = max(params.c1_range(1), min(params.c1_range(2), mutated_pop(:, 2:5:end)));
+    mutated_pop(:, 3:5:end) = max(params.sigma_range(1), min(params.sigma_range(2), mutated_pop(:, 3:5:end)));
+    mutated_pop(:, 4:5:end) = max(params.c2_range(1), min(params.c2_range(2), mutated_pop(:, 4:5:end)));
+    mutated_pop(:, 5:5:end) = max(params.sigma_range(1), min(params.sigma_range(2), mutated_pop(:, 5:5:end)));
 end
