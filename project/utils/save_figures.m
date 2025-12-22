@@ -7,7 +7,7 @@ function save_figures()
         taskName = 'matlab_figure';
     end
 
-    rootDir = fileparts(mfilename('fullpath'));
+    rootDir = fileparts(fileparts(mfilename('fullpath')));
     outputDir = fullfile(rootDir, 'report', 'assets');
     if ~exist(outputDir, 'dir')
         mkdir(outputDir);

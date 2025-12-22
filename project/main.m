@@ -5,8 +5,10 @@ addpath('src/helpers');
 addpath('utils');
 parameters;
 
-test(100);
-test(10000);
+start_logging();
+
+visualize_function(100);
+visualize_function(5000);
 
 [U, Y] = generate_data(params.num_samples);
 

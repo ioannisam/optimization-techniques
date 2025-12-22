@@ -1,4 +1,4 @@
-function test(num_samples)
+function visualize_function(num_samples)
 
     [U, Y] = generate_data(num_samples);
 
