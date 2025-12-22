@@ -9,10 +9,10 @@ function start_logging()
     end
     
     logFile = fullfile(outputDir, 'results.txt');
-    if exist(logFile, 'file')
-        delete(logFile);
-    end
-    
-    diary(logFile);
-    fprintf('--- Logging started: %s ---\n', datestr(now));
+
+    diary off
+    diary(logFile)
+
+    timestamp = datetime('now','Format','yyyy-MM-dd HH:mm:ss');
+    fprintf('--- Logging started: %s ---\n', timestamp);
 end
