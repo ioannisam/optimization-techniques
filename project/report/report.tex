@@ -1,0 +1,139 @@
+\documentclass[a4paper,12pt]{article}
+
+\usepackage{fontspec}
+\usepackage{microtype}
+\usepackage{polyglossia}
+
+\setmainlanguage{greek}
+\setotherlanguage{english}
+
+\setmainfont{Latin Modern Roman}
+\newfontfamily\greekfont{CMU Serif}[Script=Greek]
+
+\usepackage[a4paper, top=1.5cm, bottom=1.5cm, left=1.5cm, right=1.5cm]{geometry}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{array}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    citecolor=black,
+    urlcolor=blue
+}
+\usepackage[super,sort&compress]{cite}
+\usepackage{amsmath}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+
+\title{Τεχνικές Βελτιστοποίησης: Project}
+\author{Ιωάννης Μιχάλαινας ΑΕΜ:10902}
+\date{Δεκέμβριος 2025}
+
+\begin{document}
+
+\maketitle
+
+\begin{center}
+\textbf{Αποθετήριο Κώδικα:} \\
+\href{https://github.com/ioannisam/optimization-techniques}
+     {github.com/ioannisam/optimization-techniques}
+\end{center}
+
+\bigskip
+
+\begin{abstract}
+    Η παρούσα εργασία πραγματεύεται την προσέγγιση μιας άγνωστης μη γραμμικής συνάρτησης δύο μεταβλητών, $f(u_1, u_2)$, μέσω ενός Γενετικού Αλγορίθμου. Στόχος είναι η εύρεση μιας αναλυτικής έκφρασης που αποτελείται από γραμμικό συνδυασμό Γκαουσιανών συναρτήσεων. Ο αλγόριθμος υλοποιήθηκε εξ ολοκλήρου στο MATLAB, χωρίς τη χρήση έτοιμων εργαλείων βελτιστοποίησης. Η διαδικασία περιλαμβάνει την εκπαίδευση του μοντέλου, την επαλήθευση σε νέα δεδομένα για την αποφυγή υπερπροσαρμογής και τέλος, μια διαδικασία απλοποίησης για τη μείωση της πολυπλοκότητας της τελικής έκφρασης.
+\end{abstract}
+
+\tableofcontents
+\clearpage
+
+\section{Εισαγωγή}
+Στο πλαίσιο της εργασίας, ζητείται η εκτίμηση της συνάρτησης $y=f(u_1, u_2)$ βάσει μετρήσεων εισόδου-εξόδου. Ως μοντέλο προσέγγισης χρησιμοποιείται το άθροισμα $K=15$ Γκαουσιανών όρων της μορφής:
+\begin{equation}
+G(u_1, u_2) = w \cdot e^{-\left(\frac{(u_1-c_1)^2}{2\sigma_1^2} + \frac{(u_2-c_2)^2}{2\sigma_2^2}\right)}
+\end{equation}
+Η πραγματική συνάρτηση που προσπαθούμε να προσεγγίσουμε και που χρησιμοποιήθηκε για την παραγωγή των δεδομένων εκπαίδευσης και επαλήθευσης είναι η: $$f(u_1,u_2)=\sin(u_1+u_2)\sin(u_2^2)$$
+
+\begin{figure}[H]
+    \centering
+    \begin{minipage}{0.48\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{assets/main_1.jpg}
+        \caption{Οπτικοποίηση της $f(u_1,u_2)$ \\ (100 δείγματα)}
+        \label{fig:visualization1}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.48\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{assets/main_2.jpg}
+        \caption{Οπτικοποίηση της $f(u_1,u_2)$ \\ (5000 δείγματα)}
+        \label{fig:visualization2}
+    \end{minipage}
+\end{figure}
+
+
+\newpage
+\section{Γενετικοί Αλγόριθμοι}
+\subsection{Θεωρία}
+\subsection{Υλοποίηση}
+    \subsubsection{Κωδικοποίηση και Αρχικοποίηση}
+    \subsubsection{Συνάρτηση Αξιολόγησης}
+    \subsubsection{Γενετικοί Τελεστές}
+    \begin{itemize}
+        \item \textbf{Επιλογή (Selection):}
+        \item \textbf{Διασταύρωση (Crossover):}
+        \item \textbf{Μετάλλαξη (Mutation):}
+    \end{itemize}
+
+\newpage
+\section{Αποτελέσματα}
+\subsection{Γραφικές Παραστάσεις}
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.9\linewidth]{assets/main_3.jpg}
+        \caption{Σύγκλιση του αλγορίθμου ανά τις γενιές}
+        \label{fig:convergence}
+    \end{figure}
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.9\linewidth]{assets/main_4.jpg}
+        \caption{Οπτική σύγκριση της πραγματικής συνάρτησης με την εκτίμηση}
+        \label{fig:comparison}
+    \end{figure}
+\subsection{Παρατηρήσεις}
+
+\newpage
+\appendix
+
+\section{Εργαλεία}
+Τα εργαλεία που χρησιμοποιήθηκαν κατά την εκπόνηση της εργασίας είναι τα εξής:
+\begin{itemize}
+    \item MATLAB
+    \item LaTeX
+    \item Git
+\end{itemize}
+
+\begin{thebibliography}{9}
+
+    \bibitem[\href{https://www.tziola.gr/book/rovi/}{1}]{book}
+    Γ. Ροβιθάκης, \textit{Τεχνικές Βελτιστοποίησης}, Εκδόσεις Τζιόλα, 2007.
+    
+    \bibitem[\href{https://www2.fiit.stuba.sk/~kvasnicka/Free\%20books/Goldberg_Genetic_Algorithms_in_Search.pdf}{2}]{paper}
+    D. E. Goldberg, \textit{Genetic Algorithms in Search, Optimization, and Machine Learning}. Reading, MA: Addison-Wesley, 1989.
+    
+    \bibitem[\href{https://www.mathworks.com/help/gads/what-is-the-genetic-algorithm.html}{3}]{mathworks}
+    MathWorks, What Is the Genetic Algorithm?, \textit{MathWorks Documentation}.
+    
+    \bibitem[\href{https://medium.com/@sanskar4862/how-to-generate-a-genetic-algorithm-with-matlab-6dbc595d54c8}{4}]{medium}
+    S. Sanskar, How to Generate a Genetic Algorithm with MATLAB, \textit{Medium}, Dec. 2024.
+    
+    \bibitem[\href{https://www.generativedesign.org/02-deeper-dive/02-04_genetic-algorithms}{5}]{gendesign}
+    Generative Design, Genetic Algorithms, \textit{Generative Design Library}.
+
+\end{thebibliography}
+
+\end{document}

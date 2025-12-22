@@ -1,0 +1,184 @@
+--- Logging started: 22-Dec-2025 16:50:50 ---
+Initializing population...
+Starting Genetic Algorithm for 3000 generations...
+Gen 1 | Best MSE: 7.63254 | Best Fitness: 0.11584
+Gen 100 | Best MSE: 0.07276 | Best Fitness: 0.93218
+Gen 200 | Best MSE: 0.06703 | Best Fitness: 0.93718
+Gen 300 | Best MSE: 0.06607 | Best Fitness: 0.93803
+Gen 400 | Best MSE: 0.06363 | Best Fitness: 0.94017
+Gen 500 | Best MSE: 0.06250 | Best Fitness: 0.94117
+Gen 600 | Best MSE: 0.06168 | Best Fitness: 0.94191
+Gen 700 | Best MSE: 0.05964 | Best Fitness: 0.94372
+Gen 800 | Best MSE: 0.05885 | Best Fitness: 0.94442
+Gen 900 | Best MSE: 0.05804 | Best Fitness: 0.94514
+Gen 1000 | Best MSE: 0.05749 | Best Fitness: 0.94563
+Gen 1100 | Best MSE: 0.05744 | Best Fitness: 0.94568
+Gen 1200 | Best MSE: 0.05726 | Best Fitness: 0.94584
+Gen 1300 | Best MSE: 0.05671 | Best Fitness: 0.94633
+Gen 1400 | Best MSE: 0.05633 | Best Fitness: 0.94667
+Gen 1500 | Best MSE: 0.05496 | Best Fitness: 0.94790
+Gen 1600 | Best MSE: 0.05389 | Best Fitness: 0.94887
+Gen 1700 | Best MSE: 0.05211 | Best Fitness: 0.95047
+Gen 1800 | Best MSE: 0.04981 | Best Fitness: 0.95255
+Gen 1900 | Best MSE: 0.04554 | Best Fitness: 0.95644
+Gen 2000 | Best MSE: 0.03660 | Best Fitness: 0.96469
+Gen 2100 | Best MSE: 0.03329 | Best Fitness: 0.96778
+Gen 2200 | Best MSE: 0.03117 | Best Fitness: 0.96978
+Gen 2300 | Best MSE: 0.03111 | Best Fitness: 0.96983
+Gen 2400 | Best MSE: 0.03042 | Best Fitness: 0.97048
+Gen 2500 | Best MSE: 0.02962 | Best Fitness: 0.97124
+Gen 2600 | Best MSE: 0.02943 | Best Fitness: 0.97142
+Gen 2700 | Best MSE: 0.02939 | Best Fitness: 0.97145
+Gen 2800 | Best MSE: 0.02925 | Best Fitness: 0.97158
+Gen 2900 | Best MSE: 0.02923 | Best Fitness: 0.97160
+Gen 3000 | Best MSE: 0.02909 | Best Fitness: 0.97174
+
+Total Execution Time: 34.54 seconds
+
+Final Result:
+Best MSE: 0.02909
+Best Fitness: 0.97174
+
+--- STARTING VALIDATION ---
+Training MSE:   0.02909
+Validation MSE: 0.02634
+SUCCESS: The model generalizes well to new data.
+
+--- SIMPLIFICATION REPORT ---
+Pruning terms with weight magnitude < 0.10...
+  Term  1 kept: w = -1.035, c = [1.04, -0.85], s = [1.77, 1.53]
+  Term  2 kept: w =  2.412, c = [0.95, -0.68], s = [1.97, 1.55]
+  Term  3 kept: w =  1.488, c = [0.26, -0.90], s = [1.60, 2.16]
+  Term  5 kept: w =  2.849, c = [0.50, 0.01], s = [1.58, 1.54]
+  Term  6 kept: w = -2.025, c = [0.41, -0.36], s = [1.22, 1.44]
+  Term  7 kept: w =  1.116, c = [0.30, -0.52], s = [1.55, 0.44]
+  Term  8 kept: w = -2.078, c = [0.14, -1.04], s = [1.54, 1.05]
+  Term  9 kept: w = -1.571, c = [1.30, 0.57], s = [1.74, 2.14]
+  Term 10 kept: w = -2.650, c = [0.79, -0.41], s = [1.54, 1.68]
+  Term 11 kept: w = -0.974, c = [0.18, -0.64], s = [1.30, 1.47]
+  Term 12 kept: w =  1.705, c = [1.03, -1.23], s = [1.86, 1.60]
+  Term 13 kept: w = -0.824, c = [0.40, -0.79], s = [1.75, 1.42]
+  Term 14 kept: w = -2.454, c = [0.30, -0.26], s = [1.71, 1.43]
+  Term 15 kept: w =  3.752, c = [0.57, -0.08], s = [1.30, 2.23]
+
+Original Gaussians: 15 | MSE: 0.02634
+Active Gaussians:   14 | MSE: 0.02686
+>> SUCCESS: Model simplified significantly with minimal accuracy loss.
+
+--- FINAL ESTIMATED ANALYTICAL EXPRESSION ---
+F(u1, u2) = 
+   - 1.0350 * exp( - ( (u1 - 1.0419)^2 / 6.2523 + (u2 - -0.8457)^2 / 4.7097 ) )
+   + 2.4116 * exp( - ( (u1 - 0.9548)^2 / 7.7346 + (u2 - -0.6835)^2 / 4.8261 ) )
+   + 1.4884 * exp( - ( (u1 - 0.2639)^2 / 5.1376 + (u2 - -0.8998)^2 / 9.3404 ) )
+   + 2.8495 * exp( - ( (u1 - 0.4963)^2 / 5.0098 + (u2 - 0.0061)^2 / 4.7169 ) )
+   - 2.0254 * exp( - ( (u1 - 0.4139)^2 / 2.9780 + (u2 - -0.3552)^2 / 4.1290 ) )
+   + 1.1156 * exp( - ( (u1 - 0.2987)^2 / 4.7839 + (u2 - -0.5195)^2 / 0.3833 ) )
+   - 2.0785 * exp( - ( (u1 - 0.1414)^2 / 4.7281 + (u2 - -1.0359)^2 / 2.1898 ) )
+   - 1.5707 * exp( - ( (u1 - 1.3032)^2 / 6.0606 + (u2 - 0.5686)^2 / 9.1357 ) )
+   - 2.6504 * exp( - ( (u1 - 0.7857)^2 / 4.7390 + (u2 - -0.4090)^2 / 5.6631 ) )
+   - 0.9745 * exp( - ( (u1 - 0.1846)^2 / 3.3585 + (u2 - -0.6449)^2 / 4.3376 ) )
+   + 1.7053 * exp( - ( (u1 - 1.0328)^2 / 6.9247 + (u2 - -1.2325)^2 / 5.1268 ) )
+   - 0.8238 * exp( - ( (u1 - 0.4000)^2 / 6.1377 + (u2 - -0.7885)^2 / 4.0480 ) )
+   - 2.4541 * exp( - ( (u1 - 0.2958)^2 / 5.8509 + (u2 - -0.2591)^2 / 4.1052 ) )
+   + 3.7522 * exp( - ( (u1 - 0.5664)^2 / 3.3938 + (u2 - -0.0803)^2 / 9.9859 ) )
+
+Saving figures to: C:\Users\ioannis\Desktop\9ο Εξάμηνο\Τεχνικές Βελτιστοποίησης\ergasia\project\report\assets
+  Saved: main_1.jpg
+  Saved: main_2.jpg
+  Saved: main_3.jpg
+  Saved: main_4.jpg
+main
+[Warning: File not found or permission denied] 
+[> In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('start_logging', 'C:\Users\ioannis\Desktop\9ο Εξάμηνο\Τεχνικές Βελτιστοποίησης\ergasia\project\utils\start_logging.m', 13)" style="font-weight:bold">start_logging</a> (<a href="matlab: opentoline('C:\Users\ioannis\Desktop\9ο Εξάμηνο\Τεχνικές Βελτιστοποίησης\ergasia\project\utils\start_logging.m',13,0)">line 13</a>)
+In <a href="matlab:matlab.lang.internal.introspective.errorDocCallback('main', 'C:\Users\ioannis\Desktop\9ο Εξάμηνο\Τεχνικές Βελτιστοποίησης\ergasia\project\main.m', 8)" style="font-weight:bold">main</a> (<a href="matlab: opentoline('C:\Users\ioannis\Desktop\9ο Εξάμηνο\Τεχνικές Βελτιστοποίησης\ergasia\project\main.m',8,0)">line 8</a>)] 
+--- Logging started: 22-Dec-2025 17:03:17 ---
+Initializing population...
+Starting Genetic Algorithm for 3000 generations...
+Gen 1 | Best MSE: 7.95498 | Best Fitness: 0.11167
+Gen 100 | Best MSE: 0.05802 | Best Fitness: 0.94516
+Gen 200 | Best MSE: 0.05327 | Best Fitness: 0.94942
+Gen 300 | Best MSE: 0.04811 | Best Fitness: 0.95410
+Gen 400 | Best MSE: 0.03824 | Best Fitness: 0.96317
+Gen 500 | Best MSE: 0.03121 | Best Fitness: 0.96974
+Gen 600 | Best MSE: 0.02644 | Best Fitness: 0.97424
+Gen 700 | Best MSE: 0.02177 | Best Fitness: 0.97869
+Gen 800 | Best MSE: 0.01759 | Best Fitness: 0.98272
+Gen 900 | Best MSE: 0.01525 | Best Fitness: 0.98498
+Gen 1000 | Best MSE: 0.01239 | Best Fitness: 0.98776
+Gen 1100 | Best MSE: 0.01201 | Best Fitness: 0.98813
+Gen 1200 | Best MSE: 0.01165 | Best Fitness: 0.98849
+Gen 1300 | Best MSE: 0.01128 | Best Fitness: 0.98885
+Gen 1400 | Best MSE: 0.00996 | Best Fitness: 0.99014
+Gen 1500 | Best MSE: 0.00950 | Best Fitness: 0.99059
+Gen 1600 | Best MSE: 0.00921 | Best Fitness: 0.99087
+Gen 1700 | Best MSE: 0.00887 | Best Fitness: 0.99121
+Gen 1800 | Best MSE: 0.00862 | Best Fitness: 0.99145
+Gen 1900 | Best MSE: 0.00862 | Best Fitness: 0.99145
+Gen 2000 | Best MSE: 0.00855 | Best Fitness: 0.99152
+Gen 2100 | Best MSE: 0.00849 | Best Fitness: 0.99158
+Gen 2200 | Best MSE: 0.00832 | Best Fitness: 0.99175
+Gen 2300 | Best MSE: 0.00783 | Best Fitness: 0.99223
+Gen 2400 | Best MSE: 0.00778 | Best Fitness: 0.99228
+Gen 2500 | Best MSE: 0.00776 | Best Fitness: 0.99230
+Gen 2600 | Best MSE: 0.00776 | Best Fitness: 0.99230
+Gen 2700 | Best MSE: 0.00776 | Best Fitness: 0.99230
+Gen 2800 | Best MSE: 0.00771 | Best Fitness: 0.99235
+Gen 2900 | Best MSE: 0.00759 | Best Fitness: 0.99247
+Gen 3000 | Best MSE: 0.00733 | Best Fitness: 0.99273
+
+Total Execution Time: 34.41 seconds
+
+Final Result:
+Best MSE: 0.00733
+Best Fitness: 0.99273
+
+--- STARTING VALIDATION ---
+Training MSE:   0.00733
+Validation MSE: 0.00753
+SUCCESS: The model generalizes well to new data.
+
+--- SIMPLIFICATION REPORT ---
+Pruning terms with weight magnitude < 0.10...
+  Term  1 kept: w =  2.225, c = [0.56, -0.68], s = [2.00, 2.16]
+  Term  2 kept: w = -1.709, c = [0.82, -0.88], s = [1.62, 1.99]
+  Term  3 kept: w =  2.196, c = [0.85, -0.27], s = [1.83, 1.81]
+  Term  4 kept: w = -0.763, c = [0.78, -0.52], s = [2.19, 1.61]
+  Term  5 kept: w = -1.558, c = [0.42, -0.10], s = [1.61, 1.14]
+  Term  6 kept: w = -0.302, c = [0.28, -0.66], s = [2.23, 1.52]
+  Term  7 kept: w = -1.977, c = [0.10, -1.18], s = [1.14, 0.42]
+  Term  8 kept: w =  1.185, c = [1.18, -0.97], s = [1.62, 0.38]
+  Term  9 kept: w = -0.123, c = [0.18, -0.58], s = [0.92, 1.65]
+  Term 10 kept: w = -0.973, c = [1.37, -0.50], s = [1.24, 1.77]
+  Term 11 kept: w = -0.570, c = [0.06, -0.38], s = [2.49, 1.94]
+  Term 12 kept: w =  0.225, c = [-0.16, -0.91], s = [2.21, 1.71]
+  Term 13 kept: w = -0.362, c = [0.27, -0.10], s = [1.48, 1.45]
+  Term 14 kept: w =  2.063, c = [0.66, -0.20], s = [1.39, 2.07]
+  Term 15 kept: w = -0.720, c = [-0.36, -0.32], s = [2.39, 1.82]
+
+Original Gaussians: 15 | MSE: 0.00753
+Active Gaussians:   15 | MSE: 0.00753
+>> SUCCESS: Model simplified significantly with minimal accuracy loss.
+
+--- FINAL ESTIMATED ANALYTICAL EXPRESSION ---
+F(u1, u2) = 
+   + 2.2249 * exp( - ( (u1 - 0.5617)^2 / 8.0256 + (u2 - -0.6775)^2 / 9.2953 ) )
+   - 1.7095 * exp( - ( (u1 - 0.8209)^2 / 5.2653 + (u2 - -0.8756)^2 / 7.9024 ) )
+   + 2.1962 * exp( - ( (u1 - 0.8529)^2 / 6.7313 + (u2 - -0.2681)^2 / 6.5620 ) )
+   - 0.7630 * exp( - ( (u1 - 0.7790)^2 / 9.5911 + (u2 - -0.5216)^2 / 5.1586 ) )
+   - 1.5584 * exp( - ( (u1 - 0.4247)^2 / 5.1930 + (u2 - -0.0960)^2 / 2.6063 ) )
+   - 0.3022 * exp( - ( (u1 - 0.2787)^2 / 9.9023 + (u2 - -0.6567)^2 / 4.6225 ) )
+   - 1.9773 * exp( - ( (u1 - 0.0969)^2 / 2.5879 + (u2 - -1.1839)^2 / 0.3458 ) )
+   + 1.1852 * exp( - ( (u1 - 1.1808)^2 / 5.2659 + (u2 - -0.9736)^2 / 0.2821 ) )
+   - 0.1225 * exp( - ( (u1 - 0.1811)^2 / 1.6792 + (u2 - -0.5837)^2 / 5.4602 ) )
+   - 0.9728 * exp( - ( (u1 - 1.3674)^2 / 3.0770 + (u2 - -0.4995)^2 / 6.2696 ) )
+   - 0.5697 * exp( - ( (u1 - 0.0594)^2 / 12.3570 + (u2 - -0.3806)^2 / 7.5433 ) )
+   + 0.2249 * exp( - ( (u1 - -0.1589)^2 / 9.7392 + (u2 - -0.9101)^2 / 5.8230 ) )
+   - 0.3624 * exp( - ( (u1 - 0.2726)^2 / 4.3622 + (u2 - -0.0966)^2 / 4.1925 ) )
+   + 2.0630 * exp( - ( (u1 - 0.6570)^2 / 3.8621 + (u2 - -0.1973)^2 / 8.5833 ) )
+   - 0.7200 * exp( - ( (u1 - -0.3629)^2 / 11.3922 + (u2 - -0.3179)^2 / 6.6097 ) )
+
+Saving figures to: C:\Users\ioannis\Desktop\9ο Εξάμηνο\Τεχνικές Βελτιστοποίησης\ergasia\project\report\assets
+  Saved: main_1.jpg
+  Saved: main_2.jpg
+  Saved: main_3.jpg
+  Saved: main_4.jpg

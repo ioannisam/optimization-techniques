@@ -8,7 +8,7 @@ parameters;
 start_logging();
 
 visualize_function(100);
-visualize_function(5000);
+visualize_function(1000);
 
 [U, Y] = generate_data(params.num_samples);
 
