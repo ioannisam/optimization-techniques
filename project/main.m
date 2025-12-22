@@ -5,6 +5,9 @@ addpath('src/helpers');
 addpath('utils');
 parameters;
 
+test(100);
+test(10000);
+
 [U, Y] = generate_data(params.num_samples);
 
 fprintf('Initializing population...\n');
@@ -14,6 +17,7 @@ pop = initialize_population(params);
 best_mse_history = zeros(params.max_generations, 1);
 
 fprintf('Starting Genetic Algorithm for %d generations...\n', params.max_generations);
+timerVal = tic;
 for gen = 1:params.max_generations
     
     [best_val, best_idx] = max(fitness_score);
@@ -36,6 +40,8 @@ for gen = 1:params.max_generations
     fitness_score = new_fit;
     mse = new_mse;
 end
+elapsedTime = toc(timerVal);
+fprintf('\nTotal Execution Time: %.2f seconds\n', elapsedTime);
 
 [final_best_fit, idx] = max(fitness_score);
 best_solution = pop(idx, :);
@@ -70,7 +76,7 @@ else
     fprintf('SUCCESS: The model generalizes well to new data.\n');
 end
 
-figure('Name', 'Validation: Actual vs Predicted');
+figure;
 
 u1_grid = linspace(min(U_val(:,1)), max(U_val(:,1)), 50);
 u2_grid = linspace(min(U_val(:,2)), max(U_val(:,2)), 50);
@@ -119,3 +125,5 @@ end
 
 fprintf('\n--- FINAL ESTIMATED ANALYTICAL EXPRESSION ---\n');
 print_expression(simplified_genes, params);
+
+save_figures();
