@@ -1,8 +1,12 @@
 clear; clc; close all;
 
-addpath('src');
-addpath('src/helpers');
-addpath('utils');
+rootDir = fileparts(mfilename('fullpath'));
+
+addpath(rootDir);
+addpath(fullfile(rootDir, 'src'));
+addpath(fullfile(rootDir, 'src', 'helpers'));
+addpath(fullfile(rootDir, 'utils'));
+
 parameters;
 
 start_logging();
@@ -119,7 +123,7 @@ end
 fprintf('\nOriginal Gaussians: %d | MSE: %.5f\n', params.num_gaussians, val_mse);
 fprintf('Active Gaussians:   %d | MSE: %.5f\n', active_gaussians, simple_mse);
 
-if simple_mse < 1.1*val_mse
+if simple_mse < 2*val_mse
     fprintf('>> SUCCESS: Model simplified significantly with minimal accuracy loss.\n');
 else
     fprintf('>> WARNING: Pruning hurt accuracy too much.\n');

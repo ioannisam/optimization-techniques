@@ -10,6 +10,9 @@ function start_logging()
     
     logFile = fullfile(outputDir, 'results.txt');
 
+    fid = fopen(logFile, 'w');
+    fclose(fid);
+
     diary off
     diary(logFile)
 
