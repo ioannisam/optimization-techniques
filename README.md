@@ -29,3 +29,12 @@ This assignment focuses on constrained minimization problems, specifically where
 
 **Methods Implemented:**
 - **Projected Steepest Descent**
+
+## Project: Function Approximation with Genetic Algorithms
+This project involves approximating an unknown non-linear function of two variables, $f(u_1, u_2)$, using a Genetic Algorithm. The objective is to derive an analytical expression modeled as a linear combination of Gaussian basis functions.
+
+**Key Features:**
+- **Custom Genetic Algorithm:** Implemented with specific operators for real-valued problems (Roulette Wheel Selection, Arithmetic Crossover, Gaussian Mutation).
+- **Real-Valued Encoding:** Chromosomes directly represent the continuous parameters (weights, centers, and spreads) of the Gaussian terms.
+- **Model Simplification:** Includes a pruning mechanism to reduce model complexity by removing Gaussian terms with negligible weights.
+- **Validation:** Implements a validation step with a separate dataset to ensure the model generalizes well and avoids overfitting.
