@@ -133,3 +133,4 @@ fprintf('\n--- FINAL ESTIMATED ANALYTICAL EXPRESSION ---\n');
 print_expression(simplified_genes, params);
 
 save_figures();
+diary off;
