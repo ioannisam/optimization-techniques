@@ -1,7 +1,7 @@
 clear; clc; close all;
 
 thisDir = fileparts(mfilename('fullpath'));
-rootDir = fileparts(thisDir);
+rootDir = fileparts(fileparts(thisDir));
 
 addpath(rootDir);
 addpath(fullfile(rootDir, 'utils'));

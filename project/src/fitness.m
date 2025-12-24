@@ -1,4 +1,5 @@
 function [fitness, mse] = fitness(pop, U, Y, params)
+
     N = size(pop, 1);
     fitness = zeros(N, 1);
     mse = zeros(N, 1);  

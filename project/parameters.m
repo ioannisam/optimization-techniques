@@ -1,4 +1,4 @@
-% Problem Constraints
+% Parameters
 params.num_samples = 1000;
 
 params.c1_range = [-1, 2];
